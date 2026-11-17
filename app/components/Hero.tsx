@@ -1,0 +1,102 @@
+"use client";
+
+import Image from "next/image";
+import ElectricGrid from "./ElectricGrid";
+import { heroContent, siteImages } from "../lib/content";
+
+export default function Hero() {
+  const [tag1, tag2, tag3] = heroContent.tagline;
+
+  return (
+    <section
+      id="home"
+      className="relative flex min-h-[78vh] flex-col items-center justify-center overflow-hidden px-4 pt-8 pb-14 sm:min-h-[85vh] sm:px-6 sm:pt-10 sm:pb-16 md:min-h-screen"
+    >
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={siteImages.heroBackground}
+          alt="Electrical substation power engineering background for Dyota Engineered Solutions UAE"
+          title="Electrical substation and power engineering background — Dyota ES UAE"
+          fill
+          className="scale-105 object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
+      {/* Keep banner visible; blend into site sky gradient (dark → white) */}
+      <div
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#2c5f9e]/55 via-[#80d8ff]/25 to-white/90"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,transparent_10%,rgba(44,95,158,0.35)_100%)]"
+        aria-hidden
+      />
+
+      <div className="absolute inset-0 z-[2]">
+        <ElectricGrid />
+      </div>
+
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
+        <p className="hero-animate hero-animate-delay-1 mb-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs font-semibold tracking-[0.16em] uppercase sm:mb-6 sm:text-sm sm:tracking-[0.2em] md:text-base">
+          <span className="text-white/90 drop-shadow-md">{tag1}</span>
+          <span className="text-dyota-orange drop-shadow-md">{tag2}</span>
+          <span className="text-white/90 drop-shadow-md">{tag3}</span>
+        </p>
+
+        <h1 className="hero-animate hero-animate-delay-2 mb-5 text-[1.75rem] leading-tight font-bold tracking-tight sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
+          <span className="block text-white drop-shadow-lg">
+            {heroContent.headline.line1}
+          </span>
+          <span className="mt-1.5 block text-dyota-orange drop-shadow-lg sm:mt-2">
+            {heroContent.headline.line2}
+          </span>
+        </h1>
+
+        <div className="hero-animate hero-animate-delay-3 relative mb-6 sm:mb-8">
+          <div className="rounded-full border border-dyota-orange/60 bg-dyota-orange/20 px-4 py-2.5 backdrop-blur-sm sm:px-8 sm:py-3.5">
+            <p className="text-sm font-bold tracking-wide text-white drop-shadow-md sm:text-base md:text-lg">
+              {heroContent.experience}
+            </p>
+          </div>
+        </div>
+
+        <p className="hero-animate hero-animate-delay-4 mb-8 max-w-2xl text-sm leading-relaxed text-white/90 drop-shadow-md sm:mb-10 sm:text-base md:text-lg">
+          {heroContent.subheadline}
+        </p>
+
+        <div className="hero-animate hero-animate-delay-5 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
+          <a
+            href="/solutions"
+            className="inline-flex items-center justify-center rounded-full bg-dyota-orange/90 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-dyota-orange/30 backdrop-blur-sm transition-transform hover:scale-105 sm:px-8 sm:py-3.5 sm:text-base"
+          >
+            Explore Solutions
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-dyota-orange hover:bg-white/15 sm:px-8 sm:py-3.5 sm:text-base"
+          >
+            Get In Touch
+          </a>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <svg
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path
+            d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+    </section>
+  );
+}

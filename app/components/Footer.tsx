@@ -1,0 +1,228 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { footerLinks, brand, contactInfo } from "../lib/content";
+
+const contactItems = [
+  {
+    label: "Location",
+    value: contactInfo.location,
+    href: undefined,
+    icon: (
+      <>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+        />
+      </>
+    ),
+  },
+  {
+    label: "Phone",
+    value: contactInfo.phone,
+    href: `tel:${contactInfo.phone.replace(/\s/g, "")}`,
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+      />
+    ),
+  },
+  {
+    label: "Email",
+    value: contactInfo.email,
+    href: `mailto:${contactInfo.email}`,
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+      />
+    ),
+  },
+  {
+    label: "Website",
+    value: contactInfo.website,
+    href: `https://${contactInfo.website}`,
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A8.966 8.966 0 013 12c0-1.264.26-2.467.732-3.553"
+      />
+    ),
+  },
+] as const;
+
+export default function Footer() {
+  return (
+    <footer className="relative border-t border-white/40 bg-gradient-to-b from-white/70 via-[#edf7ff]/80 to-[#80d8ff]/30 text-dyota-navy">
+      {/* Tagline bar */}
+      <div className="border-b border-white/50 bg-white/40 px-4 py-4 backdrop-blur-sm sm:px-6 sm:py-5 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-center sm:flex-row sm:gap-3 sm:text-left">
+          <p className="text-xs font-semibold text-dyota-orange sm:text-sm">
+            {brand.footerLeft}
+          </p>
+          <p className="text-xs font-semibold text-dyota-navy/75 sm:text-sm">
+            {brand.footerRight}
+          </p>
+        </div>
+      </div>
+
+      {/* Main footer body */}
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-16">
+          {/* Brand column */}
+          <motion.div
+            className="sm:col-span-2 lg:col-span-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/logo-des.png"
+              alt="Dyota Engineered Solutions logo — Electrical Engineering & Power Quality Solutions"
+              title="Dyota Engineered Solutions — Designing Today, Powering Tomorrow"
+              width={240}
+              height={96}
+              className="mb-5 h-16 w-auto object-contain sm:h-20"
+            />
+            <p className="mb-5 max-w-sm text-sm leading-relaxed text-dyota-navy/65">
+              {brand.mission}
+            </p>
+            <p className="text-sm font-semibold">
+              <span className="text-dyota-navy/80">Designing Today, </span>
+              <span className="text-dyota-orange">Powering Tomorrow</span>
+            </p>
+            <div className="mt-6">
+              <p className="mb-3 text-xs font-medium tracking-wide text-dyota-navy/45 uppercase">
+                Follow Us
+              </p>
+              <a
+                href={contactInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dyota Engineered Solutions on LinkedIn"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-dyota-navy/10 bg-white/60 text-dyota-navy transition-colors hover:bg-dyota-orange hover:text-white"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Quick links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h3 className="mb-5 text-sm font-semibold tracking-wider text-dyota-orange uppercase">
+              Quick Links
+            </h3>
+            <ul className="space-y-2.5">
+              {footerLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-dyota-navy/70 transition-colors hover:text-dyota-orange"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="mb-5 text-sm font-semibold tracking-wider text-dyota-orange uppercase">
+              Contact
+            </h3>
+            <ul className="space-y-4">
+              {contactItems.map((item) => (
+                <li key={item.label} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-dyota-navy/10 bg-white/60 text-dyota-orange">
+                    <svg
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    >
+                      {item.icon}
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="text-xs font-medium tracking-wide text-dyota-navy/45 uppercase">
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm text-dyota-navy/80 transition-colors hover:text-dyota-orange"
+                        {...(item.label === "Website"
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm text-dyota-navy/80">{item.value}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Copyright */}
+        <motion.div
+          className="mt-14 border-t border-dyota-navy/10 pt-8 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="px-2 text-xs text-dyota-navy/50 sm:text-sm">
+            © {new Date().getFullYear()} Dyota Engineered Solutions. All rights
+            reserved.
+          </p>
+          <p className="mt-2 px-2 text-xs leading-relaxed text-dyota-navy/50 sm:text-sm">
+            This website is designed and developed by{" "}
+            <a
+              href="https://thedigitalmagnet.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-dyota-navy/70 underline-offset-2 transition-colors hover:text-dyota-orange hover:underline"
+            >
+              The Digital Magnet
+            </a>
+          </p>
+        </motion.div>
+      </div>
+    </footer>
+  );
+}
